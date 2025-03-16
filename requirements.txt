@@ -3,6 +3,5 @@ gunicorn
 pandas
 requests
 plotly
-io
 numpy
 plotly.express
