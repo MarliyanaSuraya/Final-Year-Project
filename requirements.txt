@@ -5,3 +5,4 @@ requests
 plotly
 numpy
 plotly.express
+openpyxl
