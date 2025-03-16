@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HelloWorld</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style> 
+        input[type=submit] {
+          background-color: transparent;
+          border: none;
+          color: black;
+          cursor: pointer;
+          font-family: 'Poppins', sans-serif;
+          font-size: medium;
+          
+        }
+
+        h1, h2{
+            line-height: 1.45px;
+            margin-left: 30px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="font-size: 80px;margin-top: 70px;">Hello</h1>
+    <script>
+		ScrollReveal().reveal('h1',{delay:200, origin:top});
+	</script>
+    <h2 style="font-size: 80px;color: darkorchid;">World</h2>
+    <script>
+		ScrollReveal().reveal('h2',{delay:300, origin:top});
+	</script>
+    <p class="about" style="font-size: 23px; font-family: 'Poppins', sans-serif; max-width: 450px; margin-left: 30px; margin-top: 110px; color: black; font-weight: 300;">
+        This website provides users with a dynamic platform to explore and analyze population data for countries around the world. Through a user-friendly interface, users can select the countries of interest and visualize key demographic indicators, including population count, birth rate, death rate, migration trends, and the predicted population count.
+    </p>
+    <script>
+		ScrollReveal().reveal('h3',{delay:450, origin:top});
+	</script>
+    <div class="container">
+        <div class="select-button">
+            <span class="button-text">Select Countries</span>
+            <span class="earth">
+                <i class="fa-solid fa-earth-americas fa-lg"></i>
+            </span>
+        </div>
+        <script>
+            ScrollReveal().reveal('.container',{delay:500, origin:top});
+        </script>
+    </div>
+    <form action="/visualization" method="post">
+        <div class="list">
+            {% for country in country_names %}
+            <li class="items">
+                <input type="checkbox" name="country" value="{{ country }}">{{ country }}<br>
+            </li>
+            {% endfor %}
+            <script>
+                ScrollReveal().reveal('.list',{delay:500, origin:top});
+            </script>
+        </div>
+        <div class="submit-button">
+            <input type="submit" value="Visualize">
+            <script>
+                ScrollReveal().reveal('.submit-button',{delay:500, origin:top});
+            </script>
+        </div>
+    </form>
+</body>
+</html>
+

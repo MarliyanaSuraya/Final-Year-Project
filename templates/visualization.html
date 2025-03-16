@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Line Chart</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+    <style>
+        h4{
+            font-family: 'Poppins', sans-serif;
+            font-size: x-large;
+        }
+
+        button[type=submit] {
+          background-color: transparent;
+          border: none;
+          color: black;
+          cursor: pointer;
+          font-family: 'Poppins', sans-serif;
+          font-size: medium;
+          
+        }
+
+        ::-webkit-scrollbar{
+        width: 15px;
+        }
+
+        ::-webkit-scrollbar-track{
+            box-shadow: inset 0 0 5px #e6aafd; 
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb{
+            background: #bf40bf;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: indigo; 
+        }
+
+        .header .logo {
+            font-size: 0;
+        }
+
+        .header .logo span {
+            font-size: 30px;
+        }
+
+        .header .logo span.black-text {
+            color: black;
+        }
+
+        .header .logo span.purple-text {
+            color: darkorchid;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">
+            <span class="black-text">Hello</span>
+            <span class="purple-text">World</span>
+        </a>
+
+        <nav class="navbar">
+            <a href="{{ url_for('index') }}">
+                <span>Home</span>
+                <span class="icon"><i class="fa-solid fa-house"></i></span>
+            </a>
+            <a href="{{ url_for('visualization', country=selected_countries|join(',')) }}">
+                <span>Line Chart</span>
+                <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
+            </a>
+            <a href="{{ url_for('choropleth', country=selected_countries|join(',')) }}">
+                <span>Choropleth Map</span>
+                <span class="icon"><i class="fa-solid fa-earth-americas"></i></span>
+            </a>
+            <a href="{{ url_for('scatter', country=selected_countries|join(',')) }}">
+                <span>Scatter</span>
+                <span class="icon"><i class="fa-solid fa-circle-nodes"></i></span>
+            </a>
+            <a href="{{ url_for('analysis', country=selected_countries|join(',')) }}">
+                <span>Analysis</span>
+                <span class="icon"><i class="fa-brands fa-stack-exchange"></i></span>
+            </a>
+        </nav>
+    </header>
+
+    <h4>Line Charts for {{ selected_countries|join(', ') }}</h4>
+
+    <div class="visualization">
+        {{ fig_population|safe }}
+    </div>
+
+    <div class="visualization">
+        {{ fig_death_rate|safe }}
+    </div>
+
+    <div class="visualization">
+        {{ fig_birth_rate|safe }}
+    </div>
+
+    <div class="visualization">
+        {{ fig_migration_trend|safe }}
+    </div>
+
+    <div class="visualization">
+        {{ fig_predicted_population|safe }}
+    </div>
+    
+</body>
+</html>
